@@ -11,16 +11,20 @@ public class Statistics {
     /////////////////////////////////////////////////////
 
     public static ArrayList<Double> compute(int one, int two, int three) {
+        // Create the Array that will hold all of the statistics
         ArrayList<Double> stats = new ArrayList<>();
 
+        // Compute the Average Converted Mana Cost of the cards
         double convertedManaCost = (one + 2 * two + 3 * three) / (one + two + three);
         stats.add(convertedManaCost);
 
+        // Compute the probability of drawing a card with the specified cost
         double chanceDrawOne = one / 60.0;
         double chanceDrawTwo = two / 60.0;
         double chanceDrawThree = three / 60.0;
         double chanceDrawZero = 1 - (chanceDrawOne + chanceDrawTwo + chanceDrawThree);
 
+        // Add the probabilities to an array to keep them organized and easy to call from within loops
         double[] drawChances = new double[] {chanceDrawZero, chanceDrawOne, chanceDrawTwo, chanceDrawThree};
 //        03, 02, 01, 00,
 //        13, 12, 11,
@@ -93,6 +97,7 @@ public class Statistics {
 //     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 1 + chanceDrawZero ^ 3;
 //     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 0 + chanceDrawZero ^ 4;
 
+        // Create the 2D array that will hold the draw probabilities for drawing the provided mana cost
         double[][] drawProbability = new double[4][4];
 
         // Go through all the possibilities of highest value from draw
@@ -116,10 +121,12 @@ public class Statistics {
                 // Note. The above is not the depiction of the array, rather the powers for the probability
                 // 4000 would represent 3 ^ 4 + 2 ^ 0 + 1 ^ 0 + 1 ^ 0 or power = [0, 0, 0, 4]
                 while (true) {
+                    // Add the probability of this combination to the others
                     drawProbability[cardOne][cardTwo] += drawChances[cardOne] * drawChances[cardTwo]
                             * Math.pow(drawChances[3], power[3]) * Math.pow(drawChances[2], power[2])
                             * Math.pow(drawChances[1], power[1]) * Math.pow(drawChances[0], power[0]);
 
+                    // Break out of loop once all the other drawn cards do not count
                     if (power[0] == 4)
                         break;
 //                    System.out.println(drawChances[cardOne]);
@@ -139,6 +146,8 @@ public class Statistics {
                     int[] temp = new int[4];
                     System.arraycopy(power, rightMostNonZero, temp, rightMostNonZero, 4 - rightMostNonZero);
                     System.arraycopy(temp, 0, power, 0, 4);
+
+                    // Remove 1 from the count of the right most and provide values for the next iteration
                     power[rightMostNonZero] -= 1;
                     power[rightMostNonZero - 1] = 4 - IntStream.of(power).sum();
                 }
