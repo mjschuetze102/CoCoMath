@@ -109,7 +109,7 @@ public class Statistics {
 
                 // Create an array that will store the powers of each probability
                 int[] power = new int[4]; // {0, 0, 0, 0}
-                power[cardOne] = 4;
+                power[cardTwo] = 4;
 
                 // Loop through all the possible combinations of powers
                 // i.e. 4000, 3100, 3010, 3001, 2200, 2110, 2101, 2020, 2011, etc...
