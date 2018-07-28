@@ -121,10 +121,26 @@ public class Statistics {
                 // Note. The above is not the depiction of the array, rather the powers for the probability
                 // 4000 would represent 3 ^ 4 + 2 ^ 0 + 1 ^ 0 + 1 ^ 0 or power = [0, 0, 0, 4]
                 while (true) {
-                    // Add the probability of this combination to the others
-                    drawProbability[cardOne][cardTwo] += drawChances[cardOne] * drawChances[cardTwo]
+                    double probability = drawChances[cardOne] * drawChances[cardTwo]
                             * Math.pow(drawChances[3], power[3]) * Math.pow(drawChances[2], power[2])
                             * Math.pow(drawChances[1], power[1]) * Math.pow(drawChances[0], power[0]);
+
+                    // Get the count of the number of cards for each converted cost
+                    int[] temp = new int[4];
+                    System.arraycopy(power, 0, temp, 0, 4);
+                    temp[cardOne] += 1;
+                    temp[cardTwo] += 1;
+
+                    // Figure out how many times the same combination could occur
+                    int multiplier = 0;
+                    int alreadyCounted = 0;
+                    for (int value : temp) {
+                        multiplier += nCr(6 - alreadyCounted, value);
+                        alreadyCounted += value;
+                    }
+
+                    // Add the probability of this combination to the others
+                    drawProbability[cardOne][cardTwo] += multiplier * probability;
 
                     // Break out of loop once all the other drawn cards do not count
                     if (power[0] == 4)
@@ -143,7 +159,7 @@ public class Statistics {
                     int rightMostNonZero = findNonZeroIndex(power);
 
                     // Collect all the values from the powers above the right-most
-                    int[] temp = new int[4];
+                    temp = new int[4];
                     System.arraycopy(power, rightMostNonZero, temp, rightMostNonZero, 4 - rightMostNonZero);
                     System.arraycopy(temp, 0, power, 0, 4);
 
@@ -186,6 +202,15 @@ public class Statistics {
      * @return the number of combinations from choosing r objects from n
      */
     private static int nCr(int n, int r) {
+        if (n > r || n == 0)
+            return 0;
+
+        if (r == n || r == 0)
+            return 1;
+
+        if (r == 1)
+            return n;
+
         return factorial(n) / (factorial(r) * factorial(n - r));
     }
 
@@ -195,11 +220,12 @@ public class Statistics {
      * @return the factorial of a number
      */
     private static int factorial(int num) {
-        for (int x = num - 1; x > 0; x--) {
-            num *= x;
+        int result = 1;
+        for (int x = 2; x <= num; x++) {
+            result *= x;
         }
 
-        return num;
+        return result;
     }
 
     /////////////////////////////////////////////////////
