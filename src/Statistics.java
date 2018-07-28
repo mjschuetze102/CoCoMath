@@ -179,6 +179,29 @@ public class Statistics {
         return 0;
     }
 
+    /**
+     * The number of different, unordered combinations of r objects from a set of n objects.
+     * @param n- number of objects to choose from
+     * @param r- number of objects to choose
+     * @return the number of combinations from choosing r objects from n
+     */
+    private static int nCr(int n, int r) {
+        return factorial(n) / (factorial(r) * factorial(n - r));
+    }
+
+    /**
+     * Function that finds the factorial of a number
+     * @param num- number to find the factorial of
+     * @return the factorial of a number
+     */
+    private static int factorial(int num) {
+        for (int x = num - 1; x > 0; x--) {
+            num *= x;
+        }
+
+        return num;
+    }
+
     /////////////////////////////////////////////////////
     //               Testing Purposes
     /////////////////////////////////////////////////////
