@@ -15,7 +15,7 @@ public class Statistics {
         ArrayList<Double> stats = new ArrayList<>();
 
         // Compute the Average Converted Mana Cost of the cards
-        double convertedManaCost = (one + 2 * two + 3 * three) / (one + two + three);
+        double convertedManaCost = (one + 2.0 * two + 3 * three) / (one + two + three);
         stats.add(convertedManaCost);
 
         // Compute the probability of drawing a card with the specified cost
