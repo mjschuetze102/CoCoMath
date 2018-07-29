@@ -14,6 +14,9 @@ public class Statistics {
         // Create the Array that will hold all of the statistics
         ArrayList<Double> stats = new ArrayList<>();
 
+        // Compute the total number of creatures provided
+        stats.add((double) one + two + three);
+
         // Compute the Average Converted Mana Cost of the cards
         double convertedManaCost = (one + 2.0 * two + 3 * three) / (one + two + three);
         stats.add(convertedManaCost);

@@ -21,11 +21,12 @@ public class PTUI {
     public void computeStatistics() {
         ArrayList<Double> stats = Statistics.compute(oneDrops, twoDrops, threeDrops);
 
-        System.out.println("Average CMC for Creatures: " + stats.get(0));
-        System.out.println("P[0] Creatures: " + stats.get(1));
-        System.out.println("P[1] Creatures: " + stats.get(2));
-        System.out.println("P[2] Creatures: " + stats.get(3));
-        System.out.println("Average CMC from CoCo: " + stats.get(4));
+        System.out.println("Number of Fetchable Creatures: " + stats.get(0));
+        System.out.println("Average CMC for Creatures: " + stats.get(1));
+        System.out.println("P[0] Creatures: " + stats.get(2));
+        System.out.println("P[1] Creatures: " + stats.get(3));
+        System.out.println("P[2] Creatures: " + stats.get(4));
+        System.out.println("Average CMC from CoCo: " + stats.get(5));
     }
 
     /////////////////////////////////////////////////////
