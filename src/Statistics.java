@@ -132,10 +132,10 @@ public class Statistics {
                     temp[cardTwo] += 1;
 
                     // Figure out how many times the same combination could occur
-                    int multiplier = 0;
+                    int multiplier = 1;
                     int alreadyCounted = 0;
                     for (int value : temp) {
-                        multiplier += nCr(6 - alreadyCounted, value);
+                        multiplier *= nCr(6 - alreadyCounted, value);
                         alreadyCounted += value;
                     }
 
@@ -202,11 +202,11 @@ public class Statistics {
      * @return the number of combinations from choosing r objects from n
      */
     private static int nCr(int n, int r) {
-        if (n > r || n == 0)
-            return 0;
-
         if (r == n || r == 0)
             return 1;
+
+        if (n < r || n == 0)
+            return 0;
 
         if (r == 1)
             return n;
