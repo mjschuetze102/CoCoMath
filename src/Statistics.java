@@ -192,7 +192,7 @@ public class Statistics {
         prob = 0;
         for (int cardOne = 3; cardOne >= 0; cardOne--) {
             for (int cardTwo = 3; cardTwo >= 0; cardTwo--) {
-                prob += drawProbability[cardOne][cardTwo] * (cardOne + cardTwo) / 2;
+                prob += drawProbability[cardOne][cardTwo] * (cardOne + cardTwo);
             }
         }
         stats.add(prob);
