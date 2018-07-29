@@ -21,6 +21,7 @@ public class PTUI {
     public void computeStatistics() {
         ArrayList<Double> stats = Statistics.compute(oneDrops, twoDrops, threeDrops);
 
+        System.out.println();
         System.out.println("Number of Fetchable Creatures: " + stats.get(0));
         System.out.println("Average CMC for Creatures: " + stats.get(1));
         System.out.println("P[0] Creatures: " + stats.get(2));
@@ -43,12 +44,14 @@ public class PTUI {
     private void receiveData() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter the amount of 1 drops: ");
+        System.out.print("Enter the amount of 1 drops: ");
         oneDrops = scanner.nextInt();
-        System.out.println("Enter the amount of 2 drops: ");
+        System.out.print("Enter the amount of 2 drops: ");
         twoDrops = scanner.nextInt();
-        System.out.println("Enter the amount of 3 drops: ");
+        System.out.print("Enter the amount of 3 drops: ");
         threeDrops = scanner.nextInt();
+
+        scanner.close();
     }
 
     /////////////////////////////////////////////////////
