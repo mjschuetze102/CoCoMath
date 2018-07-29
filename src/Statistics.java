@@ -121,6 +121,7 @@ public class Statistics {
                 // Note. The above is not the depiction of the array, rather the powers for the probability
                 // 4000 would represent 3 ^ 4 + 2 ^ 0 + 1 ^ 0 + 1 ^ 0 or power = [0, 0, 0, 4]
                 while (true) {
+                    // Find the probability of the cards being drawn
                     double probability = drawChances[cardOne] * drawChances[cardTwo]
                             * Math.pow(drawChances[3], power[3]) * Math.pow(drawChances[2], power[2])
                             * Math.pow(drawChances[1], power[1]) * Math.pow(drawChances[0], power[0]);
@@ -169,6 +170,29 @@ public class Statistics {
                 }
             }
         }
+
+        // Add the probability of drawing no playable creatures
+        stats.add(drawProbability[0][0]);
+        // Add the probability of drawing only 1 playable creature
+        stats.add(drawProbability[1][0] + drawProbability[2][0] + drawProbability[3][0]);
+
+        // Add the probability of drawing 2 playable creatures
+        double prob = 0;
+        for (int cardOne = 3; cardOne > 0; cardOne--) {
+            for (int cardTwo = 3; cardTwo > 0; cardTwo--) {
+                prob += drawProbability[cardOne][cardTwo];
+            }
+        }
+        stats.add(prob);
+
+        // Add the average mana cost being pulled from CoCo
+        prob = 0;
+        for (int cardOne = 3; cardOne >= 0; cardOne--) {
+            for (int cardTwo = 3; cardTwo >= 0; cardTwo--) {
+                prob += drawProbability[cardOne][cardTwo] * (cardOne + cardTwo) / 2;
+            }
+        }
+        stats.add(prob);
 
         return stats;
     }
