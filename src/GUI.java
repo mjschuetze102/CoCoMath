@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -67,6 +68,10 @@ public class GUI extends Application {
         // Used to separate user input and output
         Separator separator = new Separator();
 
+        GridPane displayElements = new GridPane();
+        displayElements.setPadding(new Insets(10, 10, 10, 10));
+        displayElements.setHgap(15);
+
         Label labelNumFetchable = new Label("Number of Fetchable Creatures:");
         labelNumFetchable.setTooltip(new Tooltip(
                 "Number of creatures in the\n" +
@@ -74,8 +79,10 @@ public class GUI extends Application {
                 "Collected Company"
         ));
         fieldNumFetchable = new Label();
-        HBox uiNumFetchable = new HBox();
-        uiNumFetchable.getChildren().addAll(labelNumFetchable, fieldNumFetchable);
+        GridPane.setConstraints(labelNumFetchable, 0, 0);
+        GridPane.setConstraints(fieldNumFetchable, 1, 0);
+//        HBox uiNumFetchable = new HBox();
+//        uiNumFetchable.getChildren().addAll(labelNumFetchable, fieldNumFetchable);
 
         Label labelCreatureAvgCMC = new Label("Average CMC for Creatures:");
         labelCreatureAvgCMC.setTooltip(new Tooltip(
@@ -85,8 +92,10 @@ public class GUI extends Application {
                 "Collected Company"
         ));
         fieldCreatureAvgCMC = new Label();
-        HBox uiCreatureAvgCMC = new HBox();
-        uiCreatureAvgCMC.getChildren().addAll(labelCreatureAvgCMC, fieldCreatureAvgCMC);
+        GridPane.setConstraints(labelCreatureAvgCMC, 0, 1);
+        GridPane.setConstraints(fieldCreatureAvgCMC, 1, 1);
+//        HBox uiCreatureAvgCMC = new HBox();
+//        uiCreatureAvgCMC.getChildren().addAll(labelCreatureAvgCMC, fieldCreatureAvgCMC);
 
         Label labelProbZero = new Label("P[0] Creatures:");
         labelProbZero.setTooltip(new Tooltip(
@@ -95,8 +104,10 @@ public class GUI extends Application {
                 "Collected Company"
         ));
         fieldProbZero = new Label();
-        HBox uiProbZero = new HBox();
-        uiProbZero.getChildren().addAll(labelProbZero, fieldProbZero);
+        GridPane.setConstraints(labelProbZero, 0, 2);
+        GridPane.setConstraints(fieldProbZero, 1, 2);
+//        HBox uiProbZero = new HBox();
+//        uiProbZero.getChildren().addAll(labelProbZero, fieldProbZero);
 
         Label labelProbOne = new Label("P[1] Creatures:");
         labelProbOne.setTooltip(new Tooltip(
@@ -105,8 +116,10 @@ public class GUI extends Application {
                 "Collected Company"
         ));
         fieldProbOne = new Label();
-        HBox uiProbOne = new HBox();
-        uiProbOne.getChildren().addAll(labelProbOne, fieldProbOne);
+        GridPane.setConstraints(labelProbOne, 0, 3);
+        GridPane.setConstraints(fieldProbOne, 1, 3);
+//        HBox uiProbOne = new HBox();
+//        uiProbOne.getChildren().addAll(labelProbOne, fieldProbOne);
 
         Label labelProbTwo = new Label("P[2] Creatures:");
         labelProbTwo.setTooltip(new Tooltip(
@@ -115,8 +128,10 @@ public class GUI extends Application {
                 "Collected Company"
         ));
         fieldProbTwo = new Label();
-        HBox uiProbTwo = new HBox();
-        uiProbTwo.getChildren().addAll(labelProbTwo, fieldProbTwo);
+        GridPane.setConstraints(labelProbTwo, 0, 4);
+        GridPane.setConstraints(fieldProbTwo, 1, 4);
+//        HBox uiProbTwo = new HBox();
+//        uiProbTwo.getChildren().addAll(labelProbTwo, fieldProbTwo);
 
         Label labelCoCoAvgCMC = new Label("Average CMC from CoCo:");
         labelCoCoAvgCMC.setTooltip(new Tooltip(
@@ -125,20 +140,31 @@ public class GUI extends Application {
                 "Collected Company"
         ));
         fieldCoCoAvgCMC = new Label();
-        HBox uiCoCoAvgCMC = new HBox();
-        uiCoCoAvgCMC.getChildren().addAll(labelCoCoAvgCMC, fieldCoCoAvgCMC);
+        GridPane.setConstraints(labelCoCoAvgCMC, 0, 5);
+        GridPane.setConstraints(fieldCoCoAvgCMC, 1, 5);
+//        HBox uiCoCoAvgCMC = new HBox();
+//        uiCoCoAvgCMC.getChildren().addAll(labelCoCoAvgCMC, fieldCoCoAvgCMC);
 
-        // Collection of the elements displaying information to the user
-        VBox displayElements = new VBox();
-        displayElements.getChildren().addAll(uiNumFetchable, uiCreatureAvgCMC,
-                uiProbZero, uiProbOne, uiProbTwo, uiCoCoAvgCMC);
+//        // Collection of the elements displaying information to the user
+//        VBox displayElements = new VBox();
+//        displayElements.getChildren().addAll(uiNumFetchable, uiCreatureAvgCMC,
+//                uiProbZero, uiProbOne, uiProbTwo, uiCoCoAvgCMC);
+
+        displayElements.getChildren().addAll(
+                labelNumFetchable, fieldNumFetchable,
+                labelCreatureAvgCMC, fieldCreatureAvgCMC,
+                labelProbZero, fieldProbZero,
+                labelProbOne, fieldProbOne,
+                labelProbTwo, fieldProbTwo,
+                labelCoCoAvgCMC, fieldCoCoAvgCMC
+        );
 
         // Collection of all the UI elements for the application
         VBox wholeUI = new VBox();
         wholeUI.getChildren().addAll(interactionElements, separator, displayElements);
 
         // Create the main page of the application
-        Scene mainPage = new Scene(wholeUI, 400, 300);
+        Scene mainPage = new Scene(wholeUI, 300, 270);
 
         primaryStage.setScene(mainPage);
         primaryStage.show();
@@ -173,12 +199,12 @@ public class GUI extends Application {
      * @param stats- statistics calculated from user input
      */
     private void displayStatistics(ArrayList<Double> stats) {
-        fieldNumFetchable.setText(String.valueOf(stats.get(0)));
-        fieldCreatureAvgCMC.setText(String.valueOf(stats.get(1)));
-        fieldProbZero.setText(String.valueOf(stats.get(2)));
-        fieldProbOne.setText(String.valueOf(stats.get(3)));
-        fieldProbTwo.setText(String.valueOf(stats.get(4)));
-        fieldCoCoAvgCMC.setText(String.valueOf(stats.get(5)));
+        fieldNumFetchable.setText(String.format("%.0f", stats.get(0)));
+        fieldCreatureAvgCMC.setText(String.format("%.5f", stats.get(1)));
+        fieldProbZero.setText(String.format("%.5f", stats.get(2)));
+        fieldProbOne.setText(String.format("%.5f", stats.get(3)));
+        fieldProbTwo.setText(String.format("%.5f", stats.get(4)));
+        fieldCoCoAvgCMC.setText(String.format("%.5f", stats.get(5)));
     }
 
     /////////////////////////////////////////////////////
