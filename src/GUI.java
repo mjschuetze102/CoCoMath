@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -38,18 +39,24 @@ public class GUI extends Application {
         input1Drops.setPrefColumnCount(3);
         HBox ui1Drops = new HBox();
         ui1Drops.getChildren().addAll(label1Drops, input1Drops);
+        ui1Drops.setAlignment(Pos.CENTER_LEFT);
+        ui1Drops.setSpacing(20);
 
         Label label2Drops = new Label("Number of 2 Drops:");
         TextField input2Drops = new TextField();
         input2Drops.setPrefColumnCount(3);
         HBox ui2Drops = new HBox();
         ui2Drops.getChildren().addAll(label2Drops, input2Drops);
+        ui2Drops.setAlignment(Pos.CENTER_LEFT);
+        ui2Drops.setSpacing(20);
 
         Label label3Drops = new Label("Number of 3 Drops:");
         TextField input3Drops = new TextField();
         input3Drops.setPrefColumnCount(3);
         HBox ui3Drops = new HBox();
         ui3Drops.getChildren().addAll(label3Drops, input3Drops);
+        ui3Drops.setAlignment(Pos.CENTER_LEFT);
+        ui3Drops.setSpacing(20);
 
         Button calcButton = new Button("Calculate");
         calcButton.setOnAction(event -> {
@@ -64,6 +71,7 @@ public class GUI extends Application {
         // Collection of all the user input elements
         VBox interactionElements = new VBox();
         interactionElements.getChildren().addAll(ui1Drops, ui2Drops, ui3Drops, calcButton);
+        interactionElements.setAlignment(Pos.CENTER_RIGHT);
 
         // Used to separate user input and output
         Separator separator = new Separator();
