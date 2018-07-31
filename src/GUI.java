@@ -57,7 +57,7 @@ public class GUI extends Application {
             twoDrops = validateInt(input2Drops, input2Drops.getText());
             threeDrops = validateInt(input3Drops, input3Drops.getText());
 
-            if (oneDrops != -1 || twoDrops != -1 || threeDrops != -1)
+            if (oneDrops != -1 && twoDrops != -1 && threeDrops != -1)
                 displayStatistics(Statistics.compute(oneDrops, twoDrops, threeDrops));
         });
 
