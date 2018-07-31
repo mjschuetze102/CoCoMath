@@ -89,8 +89,6 @@ public class GUI extends Application {
         fieldNumFetchable = new Label();
         GridPane.setConstraints(labelNumFetchable, 0, 0);
         GridPane.setConstraints(fieldNumFetchable, 1, 0);
-//        HBox uiNumFetchable = new HBox();
-//        uiNumFetchable.getChildren().addAll(labelNumFetchable, fieldNumFetchable);
 
         Label labelCreatureAvgCMC = new Label("Average CMC for Creatures:");
         labelCreatureAvgCMC.setTooltip(new Tooltip(
@@ -102,8 +100,6 @@ public class GUI extends Application {
         fieldCreatureAvgCMC = new Label();
         GridPane.setConstraints(labelCreatureAvgCMC, 0, 1);
         GridPane.setConstraints(fieldCreatureAvgCMC, 1, 1);
-//        HBox uiCreatureAvgCMC = new HBox();
-//        uiCreatureAvgCMC.getChildren().addAll(labelCreatureAvgCMC, fieldCreatureAvgCMC);
 
         Label labelProbZero = new Label("P[0] Creatures:");
         labelProbZero.setTooltip(new Tooltip(
@@ -114,8 +110,6 @@ public class GUI extends Application {
         fieldProbZero = new Label();
         GridPane.setConstraints(labelProbZero, 0, 2);
         GridPane.setConstraints(fieldProbZero, 1, 2);
-//        HBox uiProbZero = new HBox();
-//        uiProbZero.getChildren().addAll(labelProbZero, fieldProbZero);
 
         Label labelProbOne = new Label("P[1] Creatures:");
         labelProbOne.setTooltip(new Tooltip(
@@ -126,8 +120,6 @@ public class GUI extends Application {
         fieldProbOne = new Label();
         GridPane.setConstraints(labelProbOne, 0, 3);
         GridPane.setConstraints(fieldProbOne, 1, 3);
-//        HBox uiProbOne = new HBox();
-//        uiProbOne.getChildren().addAll(labelProbOne, fieldProbOne);
 
         Label labelProbTwo = new Label("P[2] Creatures:");
         labelProbTwo.setTooltip(new Tooltip(
@@ -138,8 +130,6 @@ public class GUI extends Application {
         fieldProbTwo = new Label();
         GridPane.setConstraints(labelProbTwo, 0, 4);
         GridPane.setConstraints(fieldProbTwo, 1, 4);
-//        HBox uiProbTwo = new HBox();
-//        uiProbTwo.getChildren().addAll(labelProbTwo, fieldProbTwo);
 
         Label labelCoCoAvgCMC = new Label("Average CMC from CoCo:");
         labelCoCoAvgCMC.setTooltip(new Tooltip(
@@ -150,13 +140,6 @@ public class GUI extends Application {
         fieldCoCoAvgCMC = new Label();
         GridPane.setConstraints(labelCoCoAvgCMC, 0, 5);
         GridPane.setConstraints(fieldCoCoAvgCMC, 1, 5);
-//        HBox uiCoCoAvgCMC = new HBox();
-//        uiCoCoAvgCMC.getChildren().addAll(labelCoCoAvgCMC, fieldCoCoAvgCMC);
-
-//        // Collection of the elements displaying information to the user
-//        VBox displayElements = new VBox();
-//        displayElements.getChildren().addAll(uiNumFetchable, uiCreatureAvgCMC,
-//                uiProbZero, uiProbOne, uiProbTwo, uiCoCoAvgCMC);
 
         displayElements.getChildren().addAll(
                 labelNumFetchable, fieldNumFetchable,

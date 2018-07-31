@@ -29,76 +29,6 @@ public class Statistics {
 
         // Add the probabilities to an array to keep them organized and easy to call from within loops
         double[] drawChances = new double[] {chanceDrawZero, chanceDrawOne, chanceDrawTwo, chanceDrawThree};
-//        03, 02, 01, 00,
-//        13, 12, 11,
-//        23, 22,
-//        33,
-//
-//00 = chanceDrawZero + chanceDrawZero + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 0 + chanceDrawZero ^ 4;
-//01 = chanceDrawZero + chanceDrawOne + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 0 + chanceDrawZero ^ 4;
-//02 = chanceDrawZero + chanceDrawTwo + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 0 + chanceDrawZero ^ 4;
-//03 = chanceDrawZero + chanceDrawThree + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 0 + chanceDrawZero ^ 4;
-//
-//11 = chanceDrawOne + chanceDrawOne + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 4 + chanceDrawZero ^ 0;
-//     chanceDrawOne + chanceDrawOne + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 3 + chanceDrawZero ^ 1;
-//     chanceDrawOne + chanceDrawOne + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 2 + chanceDrawZero ^ 2;
-//     chanceDrawOne + chanceDrawOne + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 1 + chanceDrawZero ^ 3;
-//     chanceDrawOne + chanceDrawOne + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 0 + chanceDrawZero ^ 4;
-//
-//
-//22 = chanceDrawTwo + chanceDrawTwo + chanceDrawThree ^ 0 + chanceDrawTwo ^ 4 + chanceDrawOne ^ 0 + chanceDrawZero ^ 0;
-//     chanceDrawTwo + chanceDrawTwo + chanceDrawThree ^ 0 + chanceDrawTwo ^ 3 + chanceDrawOne ^ 1 + chanceDrawZero ^ 0;
-//     chanceDrawTwo + chanceDrawTwo + chanceDrawThree ^ 0 + chanceDrawTwo ^ 3 + chanceDrawOne ^ 0 + chanceDrawZero ^ 1;
-//     chanceDrawTwo + chanceDrawTwo + chanceDrawThree ^ 0 + chanceDrawTwo ^ 2 + chanceDrawOne ^ 2 + chanceDrawZero ^ 0;
-//     chanceDrawTwo + chanceDrawTwo + chanceDrawThree ^ 0 + chanceDrawTwo ^ 2 + chanceDrawOne ^ 1 + chanceDrawZero ^ 1;
-//     chanceDrawTwo + chanceDrawTwo + chanceDrawThree ^ 0 + chanceDrawTwo ^ 2 + chanceDrawOne ^ 0 + chanceDrawZero ^ 2;
-//     chanceDrawTwo + chanceDrawTwo + chanceDrawThree ^ 0 + chanceDrawTwo ^ 1 + chanceDrawOne ^ 3 + chanceDrawZero ^ 0;
-//     chanceDrawTwo + chanceDrawTwo + chanceDrawThree ^ 0 + chanceDrawTwo ^ 1 + chanceDrawOne ^ 2 + chanceDrawZero ^ 1;
-//     chanceDrawTwo + chanceDrawTwo + chanceDrawThree ^ 0 + chanceDrawTwo ^ 1 + chanceDrawOne ^ 1 + chanceDrawZero ^ 2;
-//     chanceDrawTwo + chanceDrawTwo + chanceDrawThree ^ 0 + chanceDrawTwo ^ 1 + chanceDrawOne ^ 0 + chanceDrawZero ^ 3;
-//     chanceDrawTwo + chanceDrawTwo + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 4 + chanceDrawZero ^ 0;
-//     chanceDrawTwo + chanceDrawTwo + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 3 + chanceDrawZero ^ 1;
-//     chanceDrawTwo + chanceDrawTwo + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 2 + chanceDrawZero ^ 2;
-//     chanceDrawTwo + chanceDrawTwo + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 1 + chanceDrawZero ^ 3;
-//     chanceDrawTwo + chanceDrawTwo + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 0 + chanceDrawZero ^ 4;
-//
-//
-//
-//33 = chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 4 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 0 + chanceDrawZero ^ 0;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 3 + chanceDrawTwo ^ 1 + chanceDrawOne ^ 0 + chanceDrawZero ^ 0;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 3 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 1 + chanceDrawZero ^ 0;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 3 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 0 + chanceDrawZero ^ 1;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 2 + chanceDrawTwo ^ 2 + chanceDrawOne ^ 0 + chanceDrawZero ^ 0;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 2 + chanceDrawTwo ^ 1 + chanceDrawOne ^ 1 + chanceDrawZero ^ 0;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 2 + chanceDrawTwo ^ 1 + chanceDrawOne ^ 0 + chanceDrawZero ^ 1;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 2 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 2 + chanceDrawZero ^ 0;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 2 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 1 + chanceDrawZero ^ 1;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 2 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 0 + chanceDrawZero ^ 2;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 1 + chanceDrawTwo ^ 3 + chanceDrawOne ^ 0 + chanceDrawZero ^ 0;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 1 + chanceDrawTwo ^ 2 + chanceDrawOne ^ 1 + chanceDrawZero ^ 0;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 1 + chanceDrawTwo ^ 2 + chanceDrawOne ^ 0 + chanceDrawZero ^ 1;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 1 + chanceDrawTwo ^ 1 + chanceDrawOne ^ 2 + chanceDrawZero ^ 0;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 1 + chanceDrawTwo ^ 1 + chanceDrawOne ^ 1 + chanceDrawZero ^ 1;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 1 + chanceDrawTwo ^ 1 + chanceDrawOne ^ 0 + chanceDrawZero ^ 2;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 1 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 3 + chanceDrawZero ^ 0;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 1 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 2 + chanceDrawZero ^ 1;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 1 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 1 + chanceDrawZero ^ 2;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 1 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 0 + chanceDrawZero ^ 3;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 0 + chanceDrawTwo ^ 4 + chanceDrawOne ^ 0 + chanceDrawZero ^ 0;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 0 + chanceDrawTwo ^ 3 + chanceDrawOne ^ 1 + chanceDrawZero ^ 0;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 0 + chanceDrawTwo ^ 3 + chanceDrawOne ^ 0 + chanceDrawZero ^ 1;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 0 + chanceDrawTwo ^ 2 + chanceDrawOne ^ 2 + chanceDrawZero ^ 0;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 0 + chanceDrawTwo ^ 2 + chanceDrawOne ^ 1 + chanceDrawZero ^ 1;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 0 + chanceDrawTwo ^ 2 + chanceDrawOne ^ 0 + chanceDrawZero ^ 2;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 0 + chanceDrawTwo ^ 1 + chanceDrawOne ^ 3 + chanceDrawZero ^ 0;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 0 + chanceDrawTwo ^ 1 + chanceDrawOne ^ 2 + chanceDrawZero ^ 1;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 0 + chanceDrawTwo ^ 1 + chanceDrawOne ^ 1 + chanceDrawZero ^ 2;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 0 + chanceDrawTwo ^ 1 + chanceDrawOne ^ 0 + chanceDrawZero ^ 3;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 4 + chanceDrawZero ^ 0;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 3 + chanceDrawZero ^ 1;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 2 + chanceDrawZero ^ 2;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 1 + chanceDrawZero ^ 3;
-//     chanceDrawThree + chanceDrawThree + chanceDrawThree ^ 0 + chanceDrawTwo ^ 0 + chanceDrawOne ^ 0 + chanceDrawZero ^ 4;
 
         // Create the 2D array that will hold the draw probabilities for drawing the provided mana cost
         double[][] drawProbability = new double[4][4];
@@ -149,13 +79,6 @@ public class Statistics {
                     // Break out of loop once all the other drawn cards do not count
                     if (power[0] == 4)
                         break;
-//                    System.out.println(drawChances[cardOne]);
-//                    System.out.println(drawChances[cardTwo]);
-//                    System.out.println(Math.pow(drawChances[3], power[3]));
-//                    System.out.println(Math.pow(drawChances[2], power[2]));
-//                    System.out.println(Math.pow(drawChances[1], power[1]));
-//                    System.out.println(Math.pow(drawChances[0], power[0]));
-//                    System.out.println("Equals: " + drawProbability[cardOne][cardTwo]);
 
                     // Using depiction of 1030, it would be the 3
                     // Which would be the left most in the array [0, 3, 0, 1]
