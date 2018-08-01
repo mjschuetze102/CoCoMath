@@ -1,3 +1,5 @@
+import Model.Statistics;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
