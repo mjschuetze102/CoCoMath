@@ -3,7 +3,9 @@ package View.MainPage;
 import Model.ChartDataHolder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.chart.PieChart;
+import javafx.scene.layout.StackPane;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -12,7 +14,10 @@ import java.util.Observer;
 /**
  * Written by Michael Schuetze on 8/1/2018.
  */
-public class PieChartDisplay extends PieChart implements Observer {
+public class PieChartDisplay extends StackPane implements Observer {
+
+    // Chart used to show output to the user
+    PieChart chart;
 
     PieChartDisplay(ChartDataHolder backend) {
         backend.addObserver(this);
@@ -23,9 +28,17 @@ public class PieChartDisplay extends PieChart implements Observer {
     //              Class Functionality
     /////////////////////////////////////////////////////
 
+    /**
+     * Create the UI elements that will display the probability pie chart to the user
+     */
     private void start () {
-        this.setTitle("CoCo Pull Probability");
-        this.setLabelsVisible(false);
+        chart = new PieChart();
+        chart.setTitle("CoCo Pull Probability");
+        chart.setLabelsVisible(false);
+        chart.setMaxWidth(300);
+
+        this.getChildren().add(chart);
+        this.setAlignment(Pos.CENTER_LEFT);
     }
 
     /**
@@ -57,7 +70,7 @@ public class PieChartDisplay extends PieChart implements Observer {
                 new PieChart.Data("P[1]", stats.get(3)),
                 new PieChart.Data("P[2]", stats.get(4))
         );
-        this.setData(pieChartData);
+        chart.setData(pieChartData);
     }
 
     /////////////////////////////////////////////////////
