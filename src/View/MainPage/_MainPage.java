@@ -22,7 +22,8 @@ public class _MainPage extends Scene {
         VBox wholeUI = new VBox();
         wholeUI.getChildren().addAll(
                 new UserInput(backend), new Separator(),
-                new TextOutput(backend)
+                new TextOutput(backend), new Separator(),
+                new PieChartDisplay(backend)
         );
 
         this.setRoot(wholeUI);

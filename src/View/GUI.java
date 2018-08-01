@@ -20,7 +20,7 @@ public class GUI extends Application {
         primaryStage.setTitle("CoCo Maths");
 
         // Create the main page of the application
-        Scene mainPage = new _MainPage(new Group(), 300, 270);
+        Scene mainPage = new _MainPage(new Group(), 300, 550);
 
         primaryStage.setScene(mainPage);
         primaryStage.show();
