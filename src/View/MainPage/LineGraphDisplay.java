@@ -81,6 +81,7 @@ public class LineGraphDisplay extends StackPane implements Observer {
      * @param stats- statistics calculated from user input
      */
     private void displayStatistics(ArrayList<Double> stats) {
+        chart.getData().clear();
         XYChart.Series series = new XYChart.Series();
         series.setName("CMC");
 
