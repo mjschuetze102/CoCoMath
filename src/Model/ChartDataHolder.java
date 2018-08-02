@@ -38,10 +38,14 @@ public class ChartDataHolder extends Observable {
                 cmcSpecificStats.add(new ArrayList<>());
 
                 // Add in the offset that will be used for X axis
-                cmcSpecificStats.get(cmc).add((double) dropCount[cmc]);
+                cmcSpecificStats.get(cmc).add(Math.max((double) dropCount[cmc] - 6, -1));
 
                 // Compute stats for each input +- 5
                 for (int index = dropCount[cmc] - 5; index < dropCount[cmc] + 6; index++) {
+                    // Don't add in negative values
+                    if (index < 0)
+                        continue;
+
                     // Create a copy of the original drop counts so it's not edited
                     int[] tempArray = new int[3];
                     System.arraycopy(dropCount, 0, tempArray, 0, 3);
