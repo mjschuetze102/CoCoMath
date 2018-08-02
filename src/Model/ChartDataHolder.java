@@ -26,6 +26,10 @@ public class ChartDataHolder extends Observable {
      */
     public void computeStatistics(int oneDrops, int twoDrops, int threeDrops) {
         if (oneDrops != -1 && twoDrops != -1 && threeDrops != -1) {
+            // Make sure valid user input is given
+            if (oneDrops < 0 || twoDrops < 0 || threeDrops < 0 || oneDrops + twoDrops + threeDrops > 60)
+                return;
+
             // Initialize the CMC Specific Stats variable
             cmcSpecificStats = new ArrayList<>();
 
