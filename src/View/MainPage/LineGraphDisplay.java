@@ -2,6 +2,7 @@ package View.MainPage;
 
 import Model.ChartDataHolder;
 import javafx.geometry.Pos;
+import javafx.geometry.Side;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -39,9 +40,18 @@ public class LineGraphDisplay extends StackPane implements Observer {
         NumberAxis xAxis = new NumberAxis();
         NumberAxis yAxis = new NumberAxis();
 
+        xAxis.setForceZeroInRange(false);
+        yAxis.setForceZeroInRange(false);
+        xAxis.setAnimated(false);
+        yAxis.setAnimated(false);
+
+        xAxis.setLabel("Number of " + cmc + " Drops");
+        xAxis.setMinorTickVisible(false);
+
         chart = new LineChart<>(xAxis, yAxis);
         chart.setTitle("Changes in " + cmc + " Drops");
-        chart.setMaxWidth(300);
+        chart.setLegendSide(Side.LEFT);
+        chart.setAnimated(false);
 
         this.getChildren().add(chart);
         this.setAlignment(Pos.CENTER_LEFT);
@@ -74,8 +84,10 @@ public class LineGraphDisplay extends StackPane implements Observer {
         XYChart.Series series = new XYChart.Series();
         series.setName("CMC");
 
-        for (int index = 0; index < stats.size(); index++) {
-            series.getData().add(new XYChart.Data(index, stats.get(index)));
+        double offset = stats.get(0);
+
+        for (int index = 1; index < stats.size(); index++) {
+            series.getData().add(new XYChart.Data(index + offset, stats.get(index)));
         }
 
         chart.getData().add(series);
