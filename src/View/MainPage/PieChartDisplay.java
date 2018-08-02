@@ -17,7 +17,7 @@ import java.util.Observer;
 public class PieChartDisplay extends StackPane implements Observer {
 
     // Chart used to show output to the user
-    PieChart chart;
+    private PieChart chart;
 
     PieChartDisplay(ChartDataHolder backend) {
         backend.addObserver(this);
